@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dunia OTP · All Countries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #070b18;
+            font-family: 'Rajdhani', sans-serif;
+            color: #d6e6ff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 16px;
+            background-image: radial-gradient(ellipse at 20% 30%, rgba(0, 60, 200, 0.10) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(0, 40, 150, 0.08) 0%, transparent 50%);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1225;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e4b8a;
+            border-radius: 10px;
+        }
+
+        .app {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(8, 14, 34, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 100, 255, 0.20);
+            border-radius: 36px;
+            padding: 32px 30px 44px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), inset 0 0 100px rgba(0, 60, 200, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== LOGIN SCREEN ===== */
+        #loginScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            text-align: center;
+        }
+        #loginScreen h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #7ac0ff, #0044cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        #loginScreen .sub {
+            color: #6a8fc0;
+            font-size: 1.0rem;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+        .login-box {
+            background: rgba(0, 20, 60, 0.4);
+            border: 1px solid #1a4b8a;
+            border-radius: 20px;
+            padding: 24px 28px;
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .login-box h3 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #b0d0ff;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+        .login-box .form-group {
+            margin-bottom: 14px;
+        }
+        .login-box label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #7a9bcb;
+            margin-bottom: 4px;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0a0f22;
+            border: 1px solid #1a3a6a;
+            border-radius: 12px;
+            color: #c0dfff;
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+        .login-box input:focus {
+            border-color: #3b8cff;
+            box-shadow: 0 0 20px rgba(0, 80, 255, 0.1);
+        }
+        .login-box .btn-login,
+        .login-box .btn-register {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(145deg, #0044bb, #002277);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 1px solid #2a6ac0;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            margin-top: 4px;
+        }
+        .login-box .btn-login:hover,
+        .login-box .btn-register:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 80, 255, 0.3);
+        }
+        .login-box .btn-register {
+            background: linear-gradient(145deg, #1a5a3a, #0d3a22);
+            border-color: #2a8a5a;
+        }
+        .login-box .btn-register:hover {
+            box-shadow: 0 0 30px rgba(0, 200, 100, 0.2);
+        }
+        .login-error {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        .login-success {
+            color: #5cdb7a;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        /* ===== MAIN APP ===== */
+        #mainApp {
+            display: none;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(0, 80, 255, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .brand h1 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 2.1rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #7ac0ff, #0044cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 80, 255, 0.2);
+        }
+        .brand .sub {
+            font-size: 0.85rem;
+            color: #6a8fc0;
+            letter-spacing: 2px;
+            margin-left: 6px;
+            font-weight: 500;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cs-box {
+            background: rgba(0, 40, 100, 0.35);
+            padding: 8px 20px;
+            border-radius: 40px;
+            border: 1px solid #1a4b8a;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #8bbaff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(4px);
+        }
+        .cs-box i {
+            color: #3b8cff;
+        }
+        .cs-box span {
+            color: #c0dfff;
+            letter-spacing: 0.3px;
+        }
+        .btn-admin-panel {
+            background: rgba(255, 200, 0, 0.12);
+            border: 1px solid #f0b400;
+            border-radius: 40px;
+            padding: 8px 16px;
+            color: #f0b400;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        .btn-admin-panel:hover {
+            background: rgba(255, 200, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 200, 0, 0.15);
+        }
+        .btn-logout {
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid #8a2a2a;
+            border-radius: 40px;
+            padding: 8px 16px;
+            color: #ff6b6b;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+        .btn-logout:hover {
+            background: rgba(255, 0, 0, 0.15);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
+        }
+
+        /* ===== SALDO ===== */
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+        .saldo-card {
+            background: rgba(0, 30, 80, 0.30);
+            border: 1px solid rgba(0, 100, 255, 0.20);
+            border-radius: 60px;
+            padding: 8px 28px 8px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(4px);
+        }
+        .saldo-card .label {
+            font-weight: 500;
+            color: #7a9bcb;
+            font-size: 0.95rem;
+        }
+        .saldo-card .amount {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #6bb8ff;
+            text-shadow: 0 0 25px rgba(0, 100, 255, 0.25);
+        }
+        .saldo-card .pending-badge {
+            background: rgba(255, 200, 0, 0.12);
+            border: 1px solid #f0b400;
+            border-radius: 40px;
+            padding: 2px 14px;
+            font-size: 0.8rem;
+            color: #f0b400;
+        }
+        .saldo-card .btn-deposit {
+            background: linear-gradient(145deg, #0044bb, #002277);
+            border: none;
+            border-radius: 40px;
+            padding: 8px 24px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #2a6ac0;
+            letter-spacing: 1px;
+        }
+        .saldo-card .btn-deposit:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px rgba(0, 100, 255, 0.4);
+        }
+        .info-hint {
+            font-size: 0.8rem;
+            color: #4a7aaa;
+        }
+
+        /* ===== ETALASE SERVER ===== */
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin: 30px 0 18px;
+            color: #b0d0ff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i {
+            color: #3b8cff;
+        }
+        .section-title .badge {
+            font-size: 0.65rem;
+            background: #0f2555;
+            padding: 2px 14px;
+            border-radius: 40px;
+            color: #8ab6ff;
+            border: 1px solid #1a4b8a;
+        }
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+        .server-card {
+            background: rgba(8, 16, 40, 0.7);
+            border: 1px solid #1a3a6a;
+            border-radius: 20px;
+            padding: 20px 18px 18px;
+            transition: 0.25s ease;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .server-card:hover {
+            border-color: #3b8cff;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 50, 200, 0.25);
+        }
+        .server-card .header-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        .server-card .flag-name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.0rem;
+            color: #d0e6ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .server-card .server-tag {
+            background: #0f2555;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            color: #8ab6ff;
+            border: 1px solid #1a4b8a;
+            font-weight: 600;
+        }
+        .server-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6bb8ff;
+            font-family: 'Orbitron', monospace;
+            margin: 6px 0 4px;
+        }
+        .server-card .price small {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #6a8fc0;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .server-card .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #6a8fc0;
+            margin-top: 6px;
+            border-top: 1px solid rgba(0, 80, 255, 0.08);
+            padding-top: 8px;
+        }
+        .server-card .meta .ping {
+            color: #5ca0ff;
+        }
+        .server-card .meta .otp-rate {
+            color: #5cdb7a;
+        }
+        .server-card .btn-order {
+            width: 100%;
+            margin-top: 14px;
+            background: linear-gradient(145deg, #0044bb, #002277);
+            border: none;
+            border-radius: 40px;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #2a6ac0;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+        }
+        .server-card .btn-order:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 80, 255, 0.3);
+        }
+        .server-card .btn-order:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(0.6);
+            transform: none !important;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #0d1028;
+            border: 1px solid #1a4b8a;
+            border-radius: 32px;
+            max-width: 540px;
+            width: 100%;
+            padding: 32px 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-box h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            color: #b0d0ff;
+            margin-bottom: 4px;
+        }
+        .modal-box .sub {
+            color: #6a8fc0;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #7a9bcb;
+            margin-bottom: 4px;
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0a0f22;
+            border: 1px solid #1a3a6a;
+            border-radius: 12px;
+            color: #c0dfff;
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #3b8cff;
+            box-shadow: 0 0 20px rgba(0, 80, 255, 0.1);
+        }
+        .qr-area {
+            background: #fff;
+            padding: 12px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 16px;
+            border: 2px solid #1a4b8a;
+        }
+        .qr-area img {
+            max-width: 100%;
+            width: 180px;
+            height: auto;
+            display: block;
+        }
+        .deposit-detail {
+            background: rgba(0, 20, 60, 0.4);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin: 12px 0;
+            border-left: 3px solid #3b8cff;
+        }
+        .deposit-detail .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 4px 0;
+        }
+        .deposit-detail .row .label {
+            color: #7a9bcb;
+        }
+        .deposit-detail .row .value {
+            color: #c0dfff;
+            font-weight: 600;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(145deg, #0044bb, #002277);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #2a6ac0;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 80, 255, 0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #3b5a8a;
+            color: #8ab6ff;
+            padding: 10px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+        }
+        .btn-secondary:hover {
+            background: #1a3b6a;
+            border-color: #3b8cff;
+        }
+
+        /* Admin panel */
+        .admin-panel .deposit-pending-item {
+            background: rgba(0, 20, 60, 0.3);
+            border: 1px solid #1a3a6a;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .admin-panel .deposit-pending-item .info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 0.9rem;
+        }
+        .admin-panel .deposit-pending-item .info .serial {
+            color: #8ab6ff;
+            font-weight: 600;
+        }
+        .admin-panel .deposit-pending-item .info .detail {
+            color: #6a8fc0;
+            font-size: 0.8rem;
+        }
+        .admin-panel .deposit-pending-item .btn-confirm {
+            background: #1a7a3a;
+            border: none;
+            border-radius: 30px;
+            padding: 6px 18px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .admin-panel .deposit-pending-item .btn-confirm:hover {
+            background: #2a9a5a;
+            box-shadow: 0 0 20px rgba(0, 200, 100, 0.2);
+        }
+        .admin-panel .no-pending {
+            color: #6a8fc0;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* OTP MODAL */
+        .modal-otp .modal-box {
+            max-width: 480px;
+        }
+        .otp-display {
+            background: #0a0f22;
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid #1a4b8a;
+            margin: 16px 0;
+        }
+        .otp-display .number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #6bb8ff;
+            letter-spacing: 4px;
+            text-shadow: 0 0 30px rgba(0, 80, 255, 0.3);
+        }
+        .otp-display .info {
+            color: #7a9bcb;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+        .timer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0a0f22;
+            padding: 10px 16px;
+            border-radius: 40px;
+            border: 1px solid #1a3a6a;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .timer-bar .time {
+            font-family: 'Orbitron', monospace;
+            color: #5cdb7a;
+            font-weight: 700;
+        }
+        .timer-bar .time.warning {
+            color: #ffb347;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .app {
+                padding: 20px 16px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .brand h1 {
+                font-size: 1.6rem;
+            }
+            .header-right {
+                justify-content: space-between;
+            }
+            .cs-box {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .saldo-card {
+                justify-content: space-between;
+                padding: 8px 16px;
+            }
+            .saldo-card .amount {
+                font-size: 1.2rem;
+            }
+            .server-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .login-box {
+                padding: 20px 16px;
+            }
+        }
+        @media (max-width: 450px) {
+            .server-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-box {
+                padding: 24px 16px;
+            }
+            .login-box {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app" id="appContainer">
+
+        <!-- ========== LOGIN SCREEN ========== -->
+        <div id="loginScreen">
+            <h1>Dunia OTP</h1>
+            <div class="sub">Login / Daftar Akun</div>
+
+            <!-- FORM LOGIN -->
+            <div class="login-box">
+                <h3><i class="fas fa-sign-in-alt"></i> Login</h3>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="loginUser" placeholder="Masukkan username" />
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="loginPass" placeholder="Masukkan password" />
+                </div>
+                <button class="btn-login" id="btnLogin"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <div id="loginError" class="login-error" style="display:none;">Username atau password salah!</div>
+            </div>
+
+            <!-- FORM REGISTER -->
+            <div class="login-box register-box">
+                <h3><i class="fas fa-user-plus"></i> Daftar Akun</h3>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Username Baru</label>
+                    <input type="text" id="regUser" placeholder="Buat username" />
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="regPass" placeholder="Minimal 6 karakter" />
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-check-circle"></i> Konfirmasi Password</label>
+                    <input type="password" id="regPassConfirm" placeholder="Ulangi password" />
+                </div>
+                <button class="btn-register" id="btnRegister"><i class="fas fa-user-plus"></i> Daftar</button>
+                <div id="registerError" class="login-error" style="display:none;"></div>
+                <div id="registerSuccess" class="login-success" style="display:none;">✅ Pendaftaran berhasil! Silakan login.</div>
+            </div>
+        </div>
+
+        <!-- ========== MAIN APP ========== -->
+        <div id="mainApp">
+
+            <!-- HEADER -->
+            <header class="header">
+                <div class="brand">
+                    <h1>Dunia OTP</h1>
+                    <span class="sub"><i class="fas fa-server"></i> All Countries</span>
+                </div>
+                <div class="header-right">
+                    <div class="cs-box">
+                        <i class="fas fa-headset"></i>
+                        <span>+62 857-1906-1663</span>
+                    </div>
+                    <!-- Tombol Admin hanya untuk Operator999 -->
+                    <button class="btn-admin-panel" id="btnAdminPanel" style="display:none;"><i class="fas fa-user-cog"></i> Admin</button>
+                    <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
+
+            <!-- SALDO -->
+            <div class="top-bar">
+                <div class="saldo-card">
+                    <span class="label"><i class="fas fa-wallet"></i> Saldo</span>
+                    <span class="amount" id="saldoDisplay">Rp 0</span>
+                    <span class="pending-badge" id="pendingBadge">Pending: Rp 0</span>
+                    <button class="btn-deposit" id="btnDepositModal"><i class="fas fa-plus-circle"></i> Deposit</button>
+                </div>
+                <div class="info-hint">
+                    <i class="fas fa-info-circle"></i> Deposit menunggu konfirmasi admin
+                </div>
+            </div>
+
+            <!-- ETALASE SERVER -->
+            <div class="section-title">
+                <i class="fas fa-globe-asia"></i> Pilih Server
+                <span class="badge">Harga per server • beda ping & OTP rate</span>
+            </div>
+
+            <div class="server-grid" id="serverGrid"></div>
+
+            <div style="margin-top: 28px; border-top: 1px solid rgba(0,80,255,0.08); padding-top: 16px; font-size:0.75rem; color:#4a6a8a; text-align:center; z-index:2; position:relative;">
+                <i class="fas fa-shield-alt"></i> OTP rate bervariasi • Masa aktif 17 menit setelah order
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DEPOSIT ===== -->
+    <div class="modal-overlay" id="modalDeposit">
+        <div class="modal-box">
+            <h2><i class="fas fa-qrcode" style="color:#3b8cff;"></i> Deposit Saldo</h2>
+            <div class="sub">Isi jumlah dan pilih metode pembayaran. <span style="color:#f0b400;">Menunggu konfirmasi admin</span></div>
+            <div class="form-group">
+                <label><i class="fas fa-credit-card"></i> Metode Pembayaran</label>
+                <select id="paymentMethod">
+                    <option value="bank">🏦 Transfer Bank (BCA/Mandiri/BNI)</option>
+                    <option value="ewallet">📱 E-Wallet (OVO/Gopay/Dana)</option>
+                    <option value="qris">📷 QRIS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-coins"></i> Jumlah Deposit (Rp)</label>
+                <input type="number" id="depositAmount" min="1000" max="999999" placeholder="Min 1.000 - Max 999.999" value="5000" step="1000" />
+            </div>
+            <div class="qr-area">
+                <img id="qrDepositImage" src="https://files.catbox.moe/hyz874.jpg" alt="QR Deposit" />
+            </div>
+            <div class="deposit-detail">
+                <div class="row"><span class="label">Nomor Seri</span><span class="value" id="serialNumber">DOTP-2025-0017</span></div>
+                <div class="row"><span class="label">Metode</span><span class="value" id="selectedMethod">Transfer Bank</span></div>
+                <div class="row"><span class="label">Total Deposit</span><span class="value" id="depositTotal">Rp 5.000</span></div>
+            </div>
+            <div style="background:#060b1a; border-radius:12px; padding:10px 14px; border:1px dashed #1a4b8a; margin:10px 0; font-size:0.8rem; color:#7a9bcb;">
+                <i class="fas fa-receipt"></i> <strong>Kuitansi</strong> — Nomor seri: <span id="receiptSerial">DOTP-2025-0017</span>
+                <span style="display:block; margin-top:4px; font-size:0.7rem;">Tgl: <span id="receiptDate"></span> • Status: <span style="color:#f0b400;">Menunggu konfirmasi</span></span>
+            </div>
+            <button class="btn-primary" id="btnSubmitDeposit"><i class="fas fa-paper-plane"></i> Kirim Deposit</button>
+            <button class="btn-secondary" id="btnCloseDeposit">Tutup</button>
+        </div>
+    </div>
+
+    <!-- ===== MODAL ADMIN PANEL ===== -->
+    <div class="modal-overlay admin-panel" id="modalAdmin">
+        <div class="modal-box" style="max-width: 640px;">
+            <h2><i class="fas fa-user-cog" style="color:#f0b400;"></i> Panel Admin</h2>
+            <div class="sub">Daftar deposit pending — konfirmasi untuk menambahkan saldo user</div>
+            <div id="pendingList"></div>
+            <button class="btn-secondary" id="btnCloseAdmin">Tutup Panel</button>
+        </div>
+    </div>
+
+    <!-- ===== MODAL OTP ===== -->
+    <div class="modal-overlay modal-otp" id="modalOtp">
+        <div class="modal-box">
+            <h2><i class="fas fa-mobile-alt" style="color:#3b8cff;"></i> Nokos WhatsApp</h2>
+            <div class="sub" id="otpCountryLabel">Server Indonesia • Premium</div>
+            <div class="otp-display">
+                <div class="number" id="otpNumber">+62 812-3456-7890</div>
+                <div class="info"><i class="fas fa-check-circle" style="color:#5cdb7a;"></i> OTP terkirim • masa aktif 17 menit</div>
+            </div>
+            <div class="timer-bar">
+                <span><i class="fas fa-clock"></i> Sisa waktu</span>
+                <span class="time" id="otpTimer">17:00</span>
+            </div>
+            <div style="font-size:0.75rem; color:#4a7aaa; margin-top:6px; text-align:center;">
+                <i class="fas fa-info-circle"></i> Kode OTP akan dikirim ke nomor di atas
+            </div>
+            <button class="btn-primary" id="btnCloseOtp">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // DATA SERVER (ALL COUNTRIES)
+        // ============================================================
+        const servers = [
+            // INDONESIA (harga 4.300 - 17.500)
+            { id: 'indo-1', name: 'Indonesia', flag: '🇮🇩', server: 'Premium', price: 4300, ping: '12ms', otpRate: '98%' },
+            { id: 'indo-2', name: 'Indonesia', flag: '🇮🇩', server: 'Pro', price: 8700, ping: '18ms', otpRate: '94%' },
+            { id: 'indo-3', name: 'Indonesia', flag: '🇮🇩', server: 'Ultra', price: 12500, ping: '8ms', otpRate: '99%' },
+            // NEGARA LAIN (harga 9.800 - 25.030)
+            { id: 'us-1', name: 'Amerika', flag: '🇺🇸', server: 'East', price: 9800, ping: '45ms', otpRate: '92%' },
+            { id: 'us-2', name: 'Amerika', flag: '🇺🇸', server: 'West', price: 14500, ping: '52ms', otpRate: '89%' },
+            { id: 'uk-1', name: 'Inggris', flag: '🇬🇧', server: 'London', price: 11200, ping: '38ms', otpRate: '93%' },
+            { id: 'sg-1', name: 'Singapura', flag: '🇸🇬', server: 'SG1', price: 10200, ping: '14ms', otpRate: '97%' },
+            { id: 'au-1', name: 'Australia', flag: '🇦🇺', server: 'Sydney', price: 15800, ping: '62ms', otpRate: '88%' },
+            { id: 'jp-1', name: 'Jepang', flag: '🇯🇵', server: 'Tokyo', price: 13400, ping: '28ms', otpRate: '95%' },
+            { id: 'kr-1', name: 'Korea', flag: '🇰🇷', server: 'Seoul', price: 14100, ping: '32ms', otpRate: '94%' },
+            { id: 'my-1', name: 'Malaysia', flag: '🇲🇾', server: 'Kuala', price: 10600, ping: '16ms', otpRate: '96%' },
+            { id: 'th-1', name: 'Thailand', flag: '🇹🇭', server: 'Bangkok', price: 9900, ping: '22ms', otpRate: '93%' },
+            { id: 'vn-1', name: 'Vietnam', flag: '🇻🇳', server: 'Hanoi', price: 10300, ping: '26ms', otpRate: '91%' },
+            { id: 'ph-1', name: 'Filipina', flag: '🇵🇭', server: 'Manila', price: 10800, ping: '30ms', otpRate: '90%' },
+            { id: 'in-1', name: 'India', flag: '🇮🇳', server: 'Mumbai', price: 11800, ping: '48ms', otpRate: '87%' },
+            { id: 'de-1', name: 'Jerman', flag: '🇩🇪', server: 'Frankfurt', price: 16200, ping: '55ms', otpRate: '90%' },
+            { id: 'fr-1', name: 'Perancis', flag: '🇫🇷', server: 'Paris', price: 16800, ping: '58ms', otpRate: '89%' },
+            { id: 'ae-1', name: 'UAE', flag: '🇦🇪', server: 'Dubai', price: 15200, ping: '42ms', otpRate: '92%' },
+            { id: 'sa-1', name: 'Arab Saudi', flag: '🇸🇦', server: 'Riyadh', price: 14800, ping: '40ms', otpRate: '91%' },
+        ];
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let isLoggedIn = false;
+        let currentUser = null;
+        let saldo = 0;
+        let pendingDeposits = [];
+        let selectedServer = null;
+        let otpTimerInterval = null;
+        let otpSecondsLeft = 17 * 60;
+
+        // Elemen
+        const loginScreen = document.getElementById('loginScreen');
+        const mainApp = document.getElementById('mainApp');
+        const loginUser = document.getElementById('loginUser');
+        const loginPass = document.getElementById('loginPass');
+        const btnLogin = document.getElementById('btnLogin');
+        const loginError = document.getElementById('loginError');
+
+        const regUser = document.getElementById('regUser');
+        const regPass = document.getElementById('regPass');
+        const regPassConfirm = document.getElementById('regPassConfirm');
+        const btnRegister = document.getElementById('btnRegister');
+        const registerError = document.getElementById('registerError');
+        const registerSuccess = document.getElementById('registerSuccess');
+
+        const saldoDisplay = document.getElementById('saldoDisplay');
+        const pendingBadge = document.getElementById('pendingBadge');
+        const serverGrid = document.getElementById('serverGrid');
+        const btnAdminPanel = document.getElementById('btnAdminPanel');
+
+        const modalDeposit = document.getElementById('modalDeposit');
+        const modalAdmin = document.getElementById('modalAdmin');
+        const modalOtp = document.getElementById('modalOtp');
+
+        const btnDepositModal = document.getElementById('btnDepositModal');
+        const btnLogout = document.getElementById('btnLogout');
+        const btnCloseDeposit = document.getElementById('btnCloseDeposit');
+        const btnCloseAdmin = document.getElementById('btnCloseAdmin');
+        const btnCloseOtp = document.getElementById('btnCloseOtp');
+        const btnSubmitDeposit = document.getElementById('btnSubmitDeposit');
+
+        const depositAmount = document.getElementById('depositAmount');
+        const paymentMethod = document.getElementById('paymentMethod');
+        const depositTotal = document.getElementById('depositTotal');
+        const selectedMethod = document.getElementById('selectedMethod');
+        const serialNumber = document.getElementById('serialNumber');
+        const receiptSerial = document.getElementById('receiptSerial');
+        const receiptDate = document.getElementById('receiptDate');
+        const qrImage = document.getElementById('qrDepositImage');
+
+        const otpNumber = document.getElementById('otpNumber');
+        const otpCountryLabel = document.getElementById('otpCountryLabel');
+        const otpTimer = document.getElementById('otpTimer');
+        const pendingList = document.getElementById('pendingList');
+
+        // ============================================================
+        // USER MANAGEMENT (localStorage)
+        // ============================================================
+        function getUsers() {
+            try { return JSON.parse(localStorage.getItem('users')) || []; } catch { return []; }
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        function ensureAdmin() {
+            const users = getUsers();
+            if (!users.find(u => u.username === 'Operator999')) {
+                users.push({ username: 'Operator999', password: '999' });
+                saveUsers(users);
+            }
+        }
+
+        // ============================================================
+        // FUNGSI UTILITY
+        // ============================================================
+        function formatRupiah(num) {
+            return 'Rp ' + num.toLocaleString('id-ID');
+        }
+
+        function updateSaldoUI() {
+            saldoDisplay.textContent = formatRupiah(saldo);
+            const totalPending = pendingDeposits.reduce((sum, d) => sum + d.amount, 0);
+            pendingBadge.textContent = 'Pending: ' + formatRupiah(totalPending);
+        }
+
+        function generateSerial() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const d = String(now.getDate()).padStart(2, '0');
+            const rand = String(Math.floor(1000 + Math.random() * 9000));
+            return `DOTP-${y}${m}${d}-${rand}`;
+        }
+
+        function updateDepositQR() {
+            qrImage.src = 'https://files.catbox.moe/hyz874.jpg';
+            const serial = generateSerial();
+            serialNumber.textContent = serial;
+            receiptSerial.textContent = serial;
+            const now = new Date();
+            receiptDate.textContent = now.toLocaleDateString('id-ID', {
+                day: '2-digit', month: 'long', year: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            });
+            updateDepositTotal();
+        }
+
+        function updateDepositTotal() {
+            let val = parseInt(depositAmount.value) || 0;
+            if (val < 1000) val = 1000;
+            if (val > 999999) val = 999999;
+            depositAmount.value = val;
+            depositTotal.textContent = formatRupiah(val);
+            const methodText = paymentMethod.options[paymentMethod.selectedIndex].text;
+            selectedMethod.textContent = methodText;
+        }
+
+        // ============================================================
+        // RENDER SERVER GRID
+        // ============================================================
+        function renderServers() {
+            serverGrid.innerHTML = '';
+            servers.forEach((s, index) => {
+                const card = document.createElement('div');
+                card.className = 'server-card';
+                card.innerHTML = `
+                    <div class="header-card">
+                        <div class="flag-name">${s.flag} ${s.name} <i class="fas fa-server"></i></div>
+                        <span class="server-tag">${s.server}</span>
+                    </div>
+                    <div class="price">${formatRupiah(s.price)} <small>/ nokos</small></div>
+                    <div class="meta">
+                        <span class="ping"><i class="fas fa-tachometer-alt"></i> ${s.ping}</span>
+                        <span class="otp-rate"><i class="fas fa-check-circle"></i> ${s.otpRate}</span>
+                    </div>
+                    <button class="btn-order" data-index="${index}">Pesan Nokos</button>
+                `;
+                serverGrid.appendChild(card);
+            });
+
+            document.querySelectorAll('.btn-order').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const idx = parseInt(this.dataset.index);
+                    handleOrder(idx);
+                });
+            });
+        }
+
+        // ============================================================
+        // HANDLE ORDER
+        // ============================================================
+        function handleOrder(index) {
+            const server = servers[index];
+            if (!server) return;
+            const price = server.price;
+            if (saldo < price) {
+                alert(`❌ Saldo tidak cukup!\nHarga: ${formatRupiah(price)}\nSaldo Anda: ${formatRupiah(saldo)}\nSilakan deposit dan tunggu konfirmasi admin.`);
+                modalDeposit.classList.add('active');
+                updateDepositQR();
+                return;
+            }
+            saldo -= price;
+            updateSaldoUI();
+
+            selectedServer = server;
+            const fakeNumber = generateFakeNumber(server);
+            otpNumber.textContent = fakeNumber;
+            otpCountryLabel.textContent = `${server.flag} ${server.name} • Server ${server.server} • ${server.ping}`;
+            resetOtpTimer();
+            modalOtp.classList.add('active');
+        }
+
+        function generateFakeNumber(server) {
+            const prefixes = {
+                'Indonesia': '+62 8',
+                'Amerika': '+1 2',
+                'Inggris': '+44 7',
+                'Singapura': '+65 8',
+                'Australia': '+61 4',
+                'Jepang': '+81 9',
+                'Korea': '+82 1',
+                'Malaysia': '+60 1',
+                'Thailand': '+66 8',
+                'Vietnam': '+84 9',
+                'Filipina': '+63 9',
+                'India': '+91 9',
+                'Jerman': '+49 1',
+                'Perancis': '+33 6',
+                'UAE': '+971 5',
+                'Arab Saudi': '+966 5'
+            };
+            const prefix = prefixes[server.name] || '+62 8';
+            const rest = String(Math.floor(100000000 + Math.random() * 900000000)).slice(0, 8);
+            return `${prefix} ${rest.slice(0,4)}-${rest.slice(4,8)}`;
+        }
+
+        // ============================================================
+        // OTP TIMER
+        // ============================================================
+        function resetOtpTimer() {
+            if (otpTimerInterval) clearInterval(otpTimerInterval);
+            otpSecondsLeft = 17 * 60;
+            updateTimerDisplay();
+            otpTimerInterval = setInterval(() => {
+                otpSecondsLeft--;
+                if (otpSecondsLeft <= 0) {
+                    clearInterval(otpTimerInterval);
+                    otpTimerInterval = null;
+                    otpTimer.textContent = '⏳ Expired';
+                    otpTimer.className = 'time warning';
+                } else {
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(otpSecondsLeft / 60);
+            const secs = otpSecondsLeft % 60;
+            otpTimer.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            otpTimer.className = 'time' + (otpSecondsLeft < 60 ? ' warning' : '');
+        }
+
+        // ============================================================
+        // DEPOSIT
+        // ============================================================
+        function submitDeposit() {
+            let amount = parseInt(depositAmount.value) || 0;
+            if (amount < 1000) {
+                alert('Minimal deposit Rp 1.000');
+                depositAmount.value = 1000;
+                amount = 1000;
+            } else if (amount > 999999) {
+                alert('Maksimal deposit Rp 999.999');
+                depositAmount.value = 999999;
+                amount = 999999;
+            }
+            const method = paymentMethod.options[paymentMethod.selectedIndex].text;
+            const serial = generateSerial();
+            pendingDeposits.push({
+                id: Date.now(),
+                serial: serial,
+                amount: amount,
+                method: method,
+                date: new Date().toLocaleString('id-ID')
+            });
+            updateSaldoUI();
+            updateDepositQR();
+            alert(`✅ Deposit sebesar ${formatRupiah(amount)} telah diajukan.\nMenunggu konfirmasi admin.`);
+            modalDeposit.classList.remove('active');
+        }
+
+        // ============================================================
+        // ADMIN PANEL (hanya untuk Operator999)
+        // ============================================================
+        function renderAdminPanel() {
+            if (pendingDeposits.length === 0) {
+                pendingList.innerHTML = '<div class="no-pending">Tidak ada deposit pending.</div>';
+                return;
+            }
+            pendingList.innerHTML = '';
+            pendingDeposits.forEach((dep, idx) => {
+                const item = document.createElement('div');
+                item.className = 'deposit-pending-item';
+                item.innerHTML = `
+                    <div class="info">
+                        <span class="serial"><i class="fas fa-hashtag"></i> ${dep.serial}</span>
+                        <span class="detail">${formatRupiah(dep.amount)} • ${dep.method} • ${dep.date}</span>
+                    </div>
+                    <button class="btn-confirm" data-id="${dep.id}">Konfirmasi</button>
+                `;
+                pendingList.appendChild(item);
+            });
+
+            document.querySelectorAll('.btn-confirm').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id);
+                    confirmDeposit(id);
+                });
+            });
+        }
+
+        function confirmDeposit(id) {
+            const index = pendingDeposits.findIndex(d => d.id === id);
+            if (index === -1) return;
+            const dep = pendingDeposits[index];
+            saldo += dep.amount;
+            pendingDeposits.splice(index, 1);
+            updateSaldoUI();
+            renderAdminPanel();
+            alert(`✅ Deposit ${formatRupiah(dep.amount)} telah dikonfirmasi. Saldo bertambah.`);
+        }
+
+        // ============================================================
+        // LOGIN / REGISTER / LOGOUT
+        // ============================================================
+        function login() {
+            const user = loginUser.value.trim();
+            const pass = loginPass.value.trim();
+            const users = getUsers();
+            const found = users.find(u => u.username === user && u.password === pass);
+            if (found) {
+                isLoggedIn = true;
+                currentUser = user;
+                loginScreen.style.display = 'none';
+                mainApp.style.display = 'block';
+                loginError.style.display = 'none';
+                loginUser.value = '';
+                loginPass.value = '';
+
+                // Tampilkan tombol admin hanya jika user adalah Operator999
+                if (user === 'Operator999') {
+                    btnAdminPanel.style.display = 'flex';
+                } else {
+                    btnAdminPanel.style.display = 'none';
+                }
+
+                // Reset saldo & pending (global untuk demo)
+                // Untuk keperluan demo, kita pakai saldo global. Bisa dikembangkan per user.
+                updateSaldoUI();
+                renderServers();
+            } else {
+                loginError.style.display = 'block';
+            }
+        }
+
+        function register() {
+            const user = regUser.value.trim();
+            const pass = regPass.value.trim();
+            const confirm = regPassConfirm.value.trim();
+
+            registerError.style.display = 'none';
+            registerSuccess.style.display = 'none';
+
+            if (user.length < 3) {
+                registerError.textContent = 'Username minimal 3 karakter.';
+                registerError.style.display = 'block';
+                return;
+            }
+            if (pass.length < 6) {
+                registerError.textContent = 'Password minimal 6 karakter.';
+                registerError.style.display = 'block';
+                return;
+            }
+            if (pass !== confirm) {
+                registerError.textContent = 'Password dan konfirmasi tidak sama.';
+                registerError.style.display = 'block';
+                return;
+            }
+
+            const users = getUsers();
+            if (users.find(u => u.username === user)) {
+                registerError.textContent = 'Username sudah terdaftar.';
+                registerError.style.display = 'block';
+                return;
+            }
+
+            // Cegah user mendaftar dengan username admin
+            if (user === 'Operator999') {
+                registerError.textContent = 'Username tidak tersedia.';
+                registerError.style.display = 'block';
+                return;
+            }
+
+            users.push({ username: user, password: pass });
+            saveUsers(users);
+            registerSuccess.style.display = 'block';
+            registerSuccess.textContent = '✅ Pendaftaran berhasil! Silakan login.';
+            regUser.value = '';
+            regPass.value = '';
+            regPassConfirm.value = '';
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            currentUser = null;
+            loginScreen.style.display = 'flex';
+            mainApp.style.display = 'none';
+            modalDeposit.classList.remove('active');
+            modalAdmin.classList.remove('active');
+            modalOtp.classList.remove('active');
+            if (otpTimerInterval) clearInterval(otpTimerInterval);
+            btnAdminPanel.style.display = 'none';
+        }
+
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
+        btnLogin.addEventListener('click', login);
+        loginUser.addEventListener('keydown', (e) => { if (e.key === 'Enter') login(); });
+        loginPass.addEventListener('keydown', (e) => { if (e.key === 'Enter') login(); });
+
+        btnRegister.addEventListener('click', register);
+        regUser.addEventListener('keydown', (e) => { if (e.key === 'Enter') register(); });
+        regPass.addEventListener('keydown', (e) => { if (e.key === 'Enter') register(); });
+        regPassConfirm.addEventListener('keydown', (e) => { if (e.key === 'Enter') register(); });
+
+        btnLogout.addEventListener('click', logout);
+
+        btnDepositModal.addEventListener('click', function() {
+            modalDeposit.classList.add('active');
+            updateDepositQR();
+        });
+
+        btnCloseDeposit.addEventListener('click', function() {
+            modalDeposit.classList.remove('active');
+        });
+
+        btnSubmitDeposit.addEventListener('click', submitDeposit);
+
+        btnAdminPanel.addEventListener('click', function() {
+            // Hanya admin yang bisa membuka panel
+            if (currentUser === 'Operator999') {
+                modalAdmin.classList.add('active');
+                renderAdminPanel();
+            } else {
+                alert('Akses ditolak. Anda bukan admin.');
+            }
+        });
+
+        btnCloseAdmin.addEventListener('click', function() {
+            modalAdmin.classList.remove('active');
+        });
+
+        btnCloseOtp.addEventListener('click', function() {
+            if (otpTimerInterval) clearInterval(otpTimerInterval);
+            modalOtp.classList.remove('active');
+        });
+
+        depositAmount.addEventListener('input', updateDepositTotal);
+        paymentMethod.addEventListener('change', updateDepositTotal);
+
+        // Klik luar modal
+        modalDeposit.addEventListener('click', function(e) {
+            if (e.target === this) modalDeposit.classList.remove('active');
+        });
+        modalAdmin.addEventListener('click', function(e) {
+            if (e.target === this) modalAdmin.classList.remove('active');
+        });
+        modalOtp.addEventListener('click', function(e) {
+            if (e.target === this) {
+                if (otpTimerInterval) clearInterval(otpTimerInterval);
+                modalOtp.classList.remove('active');
+            }
+        });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        ensureAdmin();
+        loginScreen.style.display = 'flex';
+        mainApp.style.display = 'none';
+        updateSaldoUI();
+        updateDepositQR();
+
+        const serial = generateSerial();
+        serialNumber.textContent = serial;
+        receiptSerial.textContent = serial;
+        const now = new Date();
+        receiptDate.textContent = now.toLocaleDateString('id-ID', {
+            day: '2-digit', month: 'long', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+        });
+
+        console.log('🚀 Dunia OTP · All Countries siap.');
+        console.log('👤 Admin: Operator999 / 999');
+        console.log('📞 CS: +62 857-1906-1663');
+    </script>
+</body>
+</html>
